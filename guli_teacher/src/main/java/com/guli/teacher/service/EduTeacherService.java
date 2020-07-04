@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guli.teacher.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.guli.teacher.entity.query.TeacherQuery;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * <p>
