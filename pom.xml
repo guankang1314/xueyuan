@@ -6,6 +6,8 @@
         <module>guli_teacher</module>
         <module>guli_common</module>
         <module>guli_oss</module>
+        <module>guli_video</module>
+        <module>guli_eureka</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -67,6 +69,16 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
+
+            <!--Spring Cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -81,6 +93,20 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <!-- mapper.xml文件在java目录下 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <!-- mapper.xml文件在resources目录下-->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
     </build>
 
 </project>

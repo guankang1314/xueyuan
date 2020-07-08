@@ -65,12 +65,12 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
                 //6、获取每一行第一列，一级分类
                 Cell cell = row.getCell(0);
 
+                //7、判断列是否存在，存在获取列的值
                 if (cell == null) {
                     msg.add("第"+rowNum+"行第1列为空");
                     continue;
                 }
 
-                //7、判断列是否存在，存在获取列的值
                 String cellValue = cell.getStringCellValue();
                 if (StringUtils.isEmpty(cellValue)) {
                     msg.add("第"+rowNum+"行第1列数据为空");

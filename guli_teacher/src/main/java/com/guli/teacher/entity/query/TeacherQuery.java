@@ -4,10 +4,11 @@ package com.guli.teacher.entity.query;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class TeacherQuery {
+public class TeacherQuery implements Serializable {
 
     private String name;
 

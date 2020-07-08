@@ -8,6 +8,8 @@ import java.util.Date;
 
 @Component
 public class DataMetaObjectHandler implements MetaObjectHandler {
+
+
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("isDeleted",false,metaObject);
