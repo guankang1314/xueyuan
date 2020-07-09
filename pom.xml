@@ -8,6 +8,8 @@
         <module>guli_oss</module>
         <module>guli_video</module>
         <module>guli_eureka</module>
+        <module>guli_ucenter</module>
+        <module>guli_sat</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
