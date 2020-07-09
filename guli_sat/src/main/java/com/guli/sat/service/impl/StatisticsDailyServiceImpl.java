@@ -46,7 +46,8 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
 
         Integer num = (Integer) result.getData().get("registerNum");
 
-        System.err.println("***********************"+num);
+        //测试用示例
+        // System.err.println("***********************"+num);
 
         //删除表里相同日期的数据，再重新插入
         QueryWrapper<StatisticsDaily> wrapper = new QueryWrapper<>();
