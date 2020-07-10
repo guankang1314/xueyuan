@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guli.teacher.entity.EduCourse;
 import com.guli.teacher.entity.EduCourseDescription;
+import com.guli.teacher.entity.EduTeacher;
 import com.guli.teacher.entity.query.CourseQuery;
 import com.guli.teacher.entity.vo.CoursePublishVo;
 import com.guli.teacher.entity.vo.CourseVo;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,7 +33,6 @@ import java.util.Map;
  * @since 2020-07-04
  */
 @Service
-@Transactional
 public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse> implements EduCourseService {
 
 
@@ -190,6 +192,45 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public Map<String, Object> getMapById(String id) {
 
         Map<String,Object> map = baseMapper.getMapById(id);
+
+        return map;
+    }
+
+    @Override
+    public List<EduCourse> getCourseListById(String id) {
+
+        QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
+        wrapper.eq("teacher_id",id);
+
+        List<EduCourse> courseList = baseMapper.selectList(wrapper);
+
+        return courseList;
+    }
+
+    @Override
+    public Map<String, Object> getCourseFrontList(Page<EduCourse> coursePage) {
+
+
+        baseMapper.selectPage(coursePage,null);
+
+        long current = coursePage.getCurrent();
+        long total = coursePage.getTotal();
+        long size = coursePage.getSize();
+        long pages = coursePage.getPages();
+        List<EduCourse> records = coursePage.getRecords();
+        boolean hasPrevious = coursePage.hasPrevious();
+        boolean hasNext = coursePage.hasNext();
+
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("items", records);
+        map.put("current", current);
+        map.put("pages", pages);
+        map.put("size", size);
+        map.put("total", total);
+        map.put("hasNext", hasNext);
+        map.put("hasPrevious", hasPrevious);
 
         return map;
     }

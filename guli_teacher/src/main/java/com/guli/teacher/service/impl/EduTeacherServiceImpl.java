@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -57,5 +60,38 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
 
         baseMapper.selectPage(teacherPage,wrapper);
 
+    }
+
+    /**
+     * 前台系统讲师分页列表
+     * @param teacherPage
+     * @return
+     */
+    @Override
+    public Map<String, Object> getTeacherAllFront(Page<EduTeacher> teacherPage) {
+
+
+        baseMapper.selectPage(teacherPage,null);
+
+        //把对象中的分页数据获取出来，放到map集合中
+        long current = teacherPage.getCurrent();
+        long total = teacherPage.getTotal();
+        long size = teacherPage.getSize();
+        long pages = teacherPage.getPages();
+        List<EduTeacher> records = teacherPage.getRecords();
+        boolean hasPrevious = teacherPage.hasPrevious();
+        boolean hasNext = teacherPage.hasNext();
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("items", records);
+        map.put("current", current);
+        map.put("pages", pages);
+        map.put("size", size);
+        map.put("total", total);
+        map.put("hasNext", hasNext);
+        map.put("hasPrevious", hasPrevious);
+
+        return map;
     }
 }

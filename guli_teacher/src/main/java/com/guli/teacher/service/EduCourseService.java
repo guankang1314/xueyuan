@@ -7,6 +7,7 @@ import com.guli.teacher.entity.query.CourseQuery;
 import com.guli.teacher.entity.vo.CoursePublishVo;
 import com.guli.teacher.entity.vo.CourseVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -80,4 +81,19 @@ public interface EduCourseService extends IService<EduCourse> {
      * @return
      */
     Map<String, Object> getMapById(String id);
+
+    /**
+     * 通过讲师的Id查询讲师的课程
+     *
+     * @param id
+     * @return
+     */
+    List<EduCourse> getCourseListById(String id);
+
+    /**
+     * 前端查询课程列表
+     * @param coursePage
+     * @return
+     */
+    Map<String, Object> getCourseFrontList(Page<EduCourse> coursePage);
 }

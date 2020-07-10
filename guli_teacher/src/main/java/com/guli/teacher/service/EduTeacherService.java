@@ -7,6 +7,7 @@ import com.guli.teacher.entity.query.TeacherQuery;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -23,4 +24,10 @@ public interface EduTeacherService extends IService<EduTeacher> {
      */
     void pageQuery(Page<EduTeacher> teacherPage,TeacherQuery query);
 
+    /**
+     * 前台查询讲师列表
+     * @param teacherPage
+     * @return
+     */
+    Map<String, Object> getTeacherAllFront(Page<EduTeacher> teacherPage);
 }
