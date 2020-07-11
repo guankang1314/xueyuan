@@ -8,6 +8,7 @@ import com.guli.teacher.entity.EduTeacher;
 import com.guli.teacher.entity.query.CourseQuery;
 import com.guli.teacher.entity.vo.CoursePublishVo;
 import com.guli.teacher.entity.vo.CourseVo;
+import com.guli.teacher.entity.vo.CourseWebVo;
 import com.guli.teacher.mapper.EduCourseMapper;
 import com.guli.teacher.service.EduChapterService;
 import com.guli.teacher.service.EduCourseDescriptionService;
@@ -233,6 +234,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         map.put("hasPrevious", hasPrevious);
 
         return map;
+    }
+
+    @Override
+    public CourseWebVo getCourseFrontInfoById(String id) {
+
+        CourseWebVo vo = baseMapper.getCourseFrontInfoById(id);
+
+        return vo;
     }
 
 

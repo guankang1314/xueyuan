@@ -1,9 +1,14 @@
 package com.guli.vod.controller;
 
 
+import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.guli.common.result.Result;
 import com.guli.vod.service.VodService;
+import com.guli.vod.util.AliyunVodSDKUtil;
+import com.guli.vod.util.ConstantPropertiesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,6 +67,34 @@ public class UploadVodController {
         }else {
             return Result.error();
         }
+    }
+
+    /**
+     * 根据视频id获取视频的播放凭证
+     */
+    @GetMapping("getPlayAuthFront/{vid}")
+    public Result getPlayAuthFront(@PathVariable("vid") String vid) {
+
+        try {
+            //初始化对象
+            DefaultAcsClient client = AliyunVodSDKUtil.initVodClient(ConstantPropertiesUtil.ACCESS_KEY_ID, ConstantPropertiesUtil.ACCESS_KEY_SECRET);
+
+            //创建获取播放凭证的request的对象
+            GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+            request.setVideoId(vid);
+
+            //调用方法返回response
+            GetVideoPlayAuthResponse response = client.getAcsResponse(request);
+
+            String playAuth = response.getPlayAuth();
+
+            return Result.ok().data("playAuth",playAuth);
+
+        } catch (ClientException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 
