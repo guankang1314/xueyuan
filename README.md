@@ -31,9 +31,13 @@
 ### 前端选型
 
 - vue
+- node.js
 - element-ui
 - vue-template-admin
 - Nuxt
+- ECharts
+- npm
+- Swagger
 
 -------
 后续.....

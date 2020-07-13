@@ -1,5 +1,6 @@
 package com.guli.ucenter.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.guli.ucenter.entity.Member;
 import com.guli.ucenter.mapper.MemberMapper;
 import com.guli.ucenter.service.MemberService;
@@ -24,5 +25,16 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         Integer num = baseMapper.countRegisterNum(day);
 
         return num;
+    }
+
+    @Override
+    public Member getOpenUserInfo(String openid) {
+
+        QueryWrapper<Member> wrapper = new QueryWrapper<>();
+        wrapper.eq("openid",openid);
+
+        Member member = baseMapper.selectOne(wrapper);
+
+        return member;
     }
 }

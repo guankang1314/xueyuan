@@ -65,6 +65,7 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
                 //6、获取每一行第一列，一级分类
                 Cell cell = row.getCell(0);
 
+
                 //7、判断列是否存在，存在获取列的值
                 if (cell == null) {
                     msg.add("第"+rowNum+"行第1列为空");
@@ -183,7 +184,7 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
 
         //遍历一级分类列表
         for (EduSubject eduSubject : eduSubjectsList) {
-            //对拷数据到onSubject
+            //对拷数据到oneSubject
             OneSubject oneSubject = new OneSubject();
             BeanUtils.copyProperties(eduSubject,oneSubject);
 

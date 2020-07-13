@@ -17,4 +17,10 @@ public interface MemberService extends IService<Member> {
 
     Integer registerCountNum(String day);
 
+    /**
+     * 根据openid判断用户是否以存在
+     * @param openid
+     * @return
+     */
+    Member getOpenUserInfo(String openid);
 }
