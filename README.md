@@ -28,7 +28,7 @@
 - redis缓存
 - 阿里云OSS
 - 阿里云视频点播
-### 前端选型  链接：[前端]([id]: http://example.com/  "Optional Title Here")
+### 前端选型  链接： ([id]: http://example.com/  "前端")
 
 - vue
 - node.js
