@@ -30,7 +30,7 @@
 - 阿里云视频点播
 ### 前端选型  
 
-链接： []([id]: http://example.com/  "前端")
+链接： [前端]（https://github.com/guankang1314/xueyuanfront）
 
 - vue
 - node.js
