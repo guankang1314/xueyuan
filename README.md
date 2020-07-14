@@ -28,7 +28,7 @@
 - redis缓存
 - 阿里云OSS
 - 阿里云视频点播
-### 前端选型
+### 前端选型  链接：[前端]（https://github.com/guankang1314/xueyuanfront）
 
 - vue
 - node.js
